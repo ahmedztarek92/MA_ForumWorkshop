@@ -1,44 +1,46 @@
-def withdraw (balance, request):
-  print("current balance = "+str(balance))
+class ATM :
+  def __init__(self,balance,bank_name) :
+    self.balance = balance
+    self.bank_name = bank_name
 
-  if request > balance :
-    print("Can't give you all this money !!")
-    remainder = balance
+  def withdraw (self, request):
+    print("Welcome to "+ self.bank_name)
+    print("current balance = "+str(self.balance))
+    print("================================")
 
-  elif request < 0 :
-    print("Plz More than zero")
-    remainder = balance
+    if request > self.balance :
+      print("Can't give you all this money !!")
+      
 
-  else :
-    remainder = balance - request
+    elif request < 0 :
+      print("Plz More than zero")
+      
 
-    while request > 0 :
+    else :
+      self.balance -= request
+     
+      while request > 0 :
 
-      if request >= 100 :
-        print ("give 100")
-        request-=100
+        if request >= 100 :
+          print ("give 100")
+          request-=100
 
-      elif request >= 50 :
-        print("give 50")
-        request-=50
+        elif request >= 50 :
+          print("give 50")
+          request-=50
 
-      elif request >= 10 :
-        print("give 10")
-        request-=10
+        elif request >= 10 :
+          print("give 10")
+          request-=10
 
-      elif request >= 5 :
-        print("give5")
-        request-=5
+        elif request >= 5 :
+          print("give5")
+          request-=5
 
-      elif request < 5 :
-        print("give "+ str(request))
-        request=0
+        elif request < 5 :
+          print("give "+ str(request))
+          request=0
 
-  return remainder
-
-balance = 500
-
-balance = withdraw(balance, 277)
-balance = withdraw(balance, 30)
-balance = withdraw(balance, 5)
-balance = withdraw(balance, 500)
+atm1=ATM(500,"Smart Bank")
+atm1.withdraw(277)
+atm1.withdraw(300)
